@@ -8,6 +8,6 @@ You need to have [Mono](https://www.mono-project.com/) installed an on your path
 
 ## Configuration
 
-```vimscript
+```vim
 let g:ficdown_exe_path='/path/to/ficdown.exe'
 ```
