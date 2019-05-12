@@ -1,4 +1,4 @@
-function! ale_linters#markdown#ficdown#ProcessOutput(buffer, lines) abort
+function! ale_linters#ficdown#ficdown#ProcessOutput(buffer, lines) abort
   let l:pattern = '^\(\w\)\w\+ L\(\d\+\),\(\d\+\): \("[^"]\+": \)\?\(.\+\)$'
   let l:output = []
 
@@ -14,7 +14,7 @@ function! ale_linters#markdown#ficdown#ProcessOutput(buffer, lines) abort
   return l:output
 endfunction
 
-function! ale_linters#markdown#ficdown#GetCommand(buffer) abort
+function! ale_linters#ficdown#ficdown#GetExecutable(buffer) abort
   let s:exe_path = ''
   if !exists('g:ficdown_exe_path')
     let s:exe_path = 'ficdown.exe'
@@ -22,13 +22,13 @@ function! ale_linters#markdown#ficdown#GetCommand(buffer) abort
     let s:exe_path = g:ficdown_exe_path
   endif
 
-  return '%e ' . s:exe_path . ' --format lint'
+  return s:exe_path
 endfunction
 
-call ale#linter#Define('markdown', {
+call ale#linter#Define('ficdown', {
 \   'name': 'ficdown',
 \   'aliases': ['Ficdown', 'FicDown'],
-\   'executable': 'mono',
-\   'command_callback': 'ale_linters#markdown#ficdown#GetCommand',
-\   'callback': 'ale_linters#markdown#ficdown#ProcessOutput'
+\   'executable_callback': 'ale_linters#ficdown#ficdown#GetExecutable',
+\   'command': '%e --format lint',
+\   'callback': 'ale_linters#ficdown#ficdown#ProcessOutput'
 \})
