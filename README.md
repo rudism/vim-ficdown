@@ -1,3 +1,5 @@
+**Note:** Active development has moved to https://code.sitosis.com/rudism/vim-ficdown
+
 # vim-ficdown
 
 A linter definition for [ALE](https://github.com/w0rp/ale) that provides markdown syntax highlighting and error checking for Ficdown stories as you write them. Expects you to use a `.ficdown` extension on your files.
